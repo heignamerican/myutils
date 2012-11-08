@@ -23,6 +23,10 @@ public class IOUtil {
 		}
 	}
 
+	public static BufferedReader createBufferedReader(String aPath, String aCharset) throws IOException {
+		return createBufferedReader(new File(aPath), aCharset);
+	}
+
 	public static BufferedReader createBufferedReader(File aFile, String aCharset) throws IOException {
 		final FileInputStream tFileInputStream = new FileInputStream(aFile);
 		try {
@@ -37,6 +41,10 @@ public class IOUtil {
 			closeQuietly(tFileInputStream);
 			throw aCause;
 		}
+	}
+
+	public static BufferedWriter createBufferedWriter(String aPath, String aCharset) throws IOException {
+		return createBufferedWriter(new File(aPath), aCharset);
 	}
 
 	public static BufferedWriter createBufferedWriter(File aFile, String aCharset) throws IOException {
