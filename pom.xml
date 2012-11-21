@@ -3,7 +3,7 @@
 
 	<groupId>heignamerican</groupId>
 	<artifactId>myutils</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>myutils</name>
@@ -20,6 +20,14 @@
 			<url>http://repo2.maven.org/maven2</url>
 		</repository>
 	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>heignamerican-repository</id>
+			<name>heignamerican-repository</name>
+			<url>file:/${env.HOME}/git/heignamerican.github.com/maven/</url>
+		</repository>
+	</distributionManagement>
 
 	<build>
 		<pluginManagement>
