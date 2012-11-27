@@ -34,4 +34,18 @@ public class CollectionUtil {
 		}
 		return aResult;
 	}
+
+	public static <T, CollectionType extends Collection<T>> CollectionType select(Collection<T> aSource, Filter<T> aFilter) {
+		try {
+			@SuppressWarnings("unchecked")
+			CollectionType tNewInstance = (CollectionType) aSource.getClass().newInstance();
+			for (T tT : aSource) {
+				if (aFilter.accept(tT))
+					tNewInstance.add(tT);
+			}
+			return tNewInstance;
+		} catch (Exception aCause) {
+			throw new RuntimeException(aCause);
+		}
+	}
 }
