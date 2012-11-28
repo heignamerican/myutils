@@ -6,7 +6,16 @@ import java.io.StringWriter;
 public class ExceptionUtil {
 	public static String toString(Throwable aThrowable) {
 		final StringWriter tStringWriter = new StringWriter();
-		aThrowable.printStackTrace(new PrintWriter(tStringWriter));
-		return tStringWriter.toString();
+		try {
+			final PrintWriter tPrintWriter = new PrintWriter(tStringWriter);
+			try {
+				aThrowable.printStackTrace(tPrintWriter);
+				return tStringWriter.toString();
+			} finally {
+				IOUtil.closeQuietly(tPrintWriter);
+			}
+		} finally {
+			IOUtil.closeQuietly(tStringWriter);
+		}
 	}
 }
