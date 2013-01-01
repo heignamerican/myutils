@@ -48,4 +48,9 @@ public class CollectionUtil {
 			throw new RuntimeException(aCause);
 		}
 	}
+
+	public static <T, TCollection extends Collection<? super T>> TCollection copy(Collection<? extends T> aSource, TCollection aTarget) {
+		aTarget.addAll(aSource);
+		return aTarget;
+	}
 }
